@@ -32,7 +32,6 @@ const getAlltours = (req, res) => {
         },
     });
 };
-
 const createTour = (req, res) => {
     console.log(req.body);
 
@@ -51,7 +50,6 @@ const createTour = (req, res) => {
         });
     });
 };
-
 const getTour = (req, res) => {
     console.log(req.params);
 
@@ -72,7 +70,6 @@ const getTour = (req, res) => {
         },
     });
 };
-
 const updateTour = (req, res) => {
     const id = req.params.id * 1;
 
@@ -90,7 +87,6 @@ const updateTour = (req, res) => {
         },
     });
 };
-
 const deleteTour = (req, res) => {
     const id = req.params.id * 1;
 
