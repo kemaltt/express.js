@@ -1,0 +1,68 @@
+const { Sequelize } = require('sequelize')
+const todoModel = require('../models/todoModel')
+
+const tododb = require('../db/index')
+
+
+
+exports.getAllTodos = async(req, res) => {
+    try {
+        const allTodos = await todoModel.findAll()
+        res.status(200).send(allTodos)
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+exports.addOneTodo = async(req, res) => {
+    // console.log(req.body);
+
+    try {
+        const { todo, urgent } = req.body
+        if (todo) {
+            await todoModel.create({ todo: todo, urgent: urgent })
+            res.status(200).json({ message: 'success' })
+        } else {
+            res.status(400).json({ message: 'bad request' })
+        }
+    } catch (err) {
+        console.log(err);
+    }
+
+
+
+}
+
+exports.updateTodo = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const { todo } = req.body;
+        await todoModel.update({ todo: todo }, {
+            where: {
+                id: id
+            }
+        })
+
+        res.status(200).json({
+            message: 'success'
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+exports.deleteTodo = async(req, res) => {
+
+    try {
+        const { id } = req.params
+        const todoToDelete = await todoModel.findByPk(id)
+        todoToDelete.destroy()
+        res.status(200).json({
+            message: 'destroyed'
+        })
+    } catch (error) {
+        console.log(error);
+    }
+
+}
