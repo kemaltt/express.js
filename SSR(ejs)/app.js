@@ -12,7 +12,7 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '/views'))
 
 app.use(express.static(path.join(__dirname, '/puplic')))
-// app.use('css', express.static(path.join(__dirname, '/puplic/css')))
+    // app.use('css', express.static(path.join(__dirname, '/puplic/css')))
 app.use('/foods', foodRouter)
 
 
