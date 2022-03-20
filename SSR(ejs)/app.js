@@ -17,7 +17,7 @@ app.use('/foods', foodRouter)
 
 
 app.get('/', (req, res) => {
-    //res.send('HELLLOOOOO')
+    //res.send('HELLLOOO')
     res.render('home.ejs')
 })
 
